@@ -5,7 +5,7 @@ export default function createLinkedList() {
     let end = null;
 
     function prepend(value) {
-        node = new Node(value, start);
+        let node = new Node(value, start);
 
         if(!start) {
             start = node;
@@ -16,7 +16,7 @@ export default function createLinkedList() {
     };
 
     function append(value) {
-        node = new Node(value);
+        let node = new Node(value);
 
         if(!start) {
             start = node;
