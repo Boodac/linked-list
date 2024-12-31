@@ -9,8 +9,10 @@ export default function createLinkedList() {
 
         if(!start) {
             start = node;
+        } else if(!start.nextNode) {
+            end = start;
+            start = node;
         } else {
-            node.nextNode = start;
             start = node;
         };
     };
