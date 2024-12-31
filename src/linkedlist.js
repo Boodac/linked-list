@@ -29,7 +29,7 @@ export default function createLinkedList() {
         }
     }
 
-    function size(value) {
+    function size() {
         let reference = start;
         let counter = 0;
         do {
@@ -49,7 +49,7 @@ export default function createLinkedList() {
 
     function at(index) {
         let reference = start;
-        for(let i = 0 ; i <= index ; i++) {
+        for(let i = 0 ; i < index ; i++) {
             reference = reference.nextNode;
         }
         return reference;
@@ -57,11 +57,11 @@ export default function createLinkedList() {
 
     function pop() {
         if(start.nextNode === null) start = null;
-        let reference = start;
-        while(reference) {
-            let lastChecked = reference;
-            reference = reference.nextNode;
-            if(!reference.nextNode) lastChecked.nextNode = null;
+        else {
+            let length = this.size();
+            let node = this.at(length-2);
+            end = node;
+            node.nextNode = null;
         }
     }
 
