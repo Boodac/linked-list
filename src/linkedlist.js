@@ -44,7 +44,7 @@ export default function createLinkedList() {
     }
 
     function tail() {
-        return end;
+        return end ? end : start;
     }
 
     function at(index) {
