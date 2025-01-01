@@ -97,7 +97,7 @@ export default class LinkedList {
         let string = "";
         let reference = this.start;
         while(reference) {
-            string += `(${reference.value}) -> `;
+            string += `(${reference.value.toString()}) -> `;
             reference = reference.nextNode; 
         }
         return string + "null";
