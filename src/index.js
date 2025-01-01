@@ -1,21 +1,21 @@
 import LinkedList from "./linkedlist.js";
 
-const list = new LinkedList();
+const list = new LinkedList("Zebra");
 
-list.prepend("dog");
-list.prepend("cat");
-list.prepend("parrot");
-list.prepend("hamster");
-list.prepend("snake");
-list.prepend("turtle");
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
 
 console.log(list.toString());
-console.log(list.tail());
+console.log(list.tail);
 
 list.append("fox");
 
 console.log(list.toString());
-console.log(list.tail());
+console.log(list.tail);
 
 console.log(list.at(list.size()-2));
 
@@ -29,4 +29,4 @@ list.pop();
 
 console.log(list.toString());
 
-console.log(list.head());
+console.log(list.head);

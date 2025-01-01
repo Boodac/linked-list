@@ -1,12 +1,12 @@
 import Node from "./node.js";
 
 export default class LinkedList {
-
-    constructor() {
-    }
-
     #start = null;
     #end = null;
+
+    constructor(headValue = null) {
+        if(headValue) this.prepend(headValue);
+    }
 
     prepend(value) {
         let node = new Node(value, this.start);
@@ -45,11 +45,11 @@ export default class LinkedList {
         return counter;
     }
 
-    head() {
+    get head() {
         return this.start;
     }
 
-    tail() {
+    get tail() {
         return this.end ? this.end : this.start;
     }
 
