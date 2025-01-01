@@ -3,7 +3,6 @@ import Node from "./node.js";
 export default class LinkedList {
     #start = null;
     #end = null;
-
     constructor(headValue = null) {
         if(headValue) this.prepend(headValue);
     }
@@ -38,10 +37,12 @@ export default class LinkedList {
     size() {
         let reference = this.start;
         let counter = 0;
+
         do {
             counter++;
             reference = reference.nextNode;
         } while(reference)
+
         return counter;
     }
 
@@ -55,9 +56,11 @@ export default class LinkedList {
 
     at(index) {
         let reference = this.start;
+
         for(let i = 0 ; i < index ; i++) {
             reference = reference.nextNode;
-        }
+        };
+
         return reference;
     }
 
@@ -73,33 +76,39 @@ export default class LinkedList {
 
     contains(value) {
         let reference = this.start;
+
         while(reference) {
             if(reference.value === value) {
                 return true;
             };
             reference = reference.nextNode;
-        }
+        };
+
         return false;
     }
 
     find(value) {
         let reference = this.start;
         let index = 0;
+
         while(reference) {
             if(reference.value === value) return index;
             reference = reference.nextNode;
             index++;
-        }
+        };
+
         return null;
     }
 
     toString() {
         let string = "";
         let reference = this.start;
+
         while(reference) {
             string += `(${reference.value.toString()}) -> `;
             reference = reference.nextNode; 
-        }
+        };
+
         return string + "null";
     }
 }
