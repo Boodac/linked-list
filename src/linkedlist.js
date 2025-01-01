@@ -1,38 +1,42 @@
 import Node from "./node.js";
 
-export default function createLinkedList() {
-    let start = null;
-    let end = null;
+export default class LinkedList {
 
-    function prepend(value) {
-        let node = new Node(value, start);
+    constructor() {
+    }
 
-        if(!start) {
-            start = node;
-        } else if(!start.nextNode) {
-            end = start;
-            start = node;
+    #start = null;
+    #end = null;
+
+    prepend(value) {
+        let node = new Node(value, this.start);
+
+        if(!this.start) {
+            this.start = node;
+        } else if(!this.start.nextNode) {
+            this.end = this.start;
+            this.start = node;
         } else {
-            start = node;
+            this.start = node;
         };
     };
 
-    function append(value) {
+    append(value) {
         let node = new Node(value);
 
-        if(!start) {
-            start = node;
-        } else if (!end) {
-            start.nextNode = node;
-            end = node;
+        if(!this.start) {
+            this.start = node;
+        } else if (!this.end) {
+            this.start.nextNode = node;
+            this.end = node;
         } else {
-            end.nextNode = node;
-            end = node;
+            this.end.nextNode = node;
+            this.end = node;
         }
     }
 
-    function size() {
-        let reference = start;
+    size() {
+        let reference = this.start;
         let counter = 0;
         do {
             counter++;
@@ -41,34 +45,34 @@ export default function createLinkedList() {
         return counter;
     }
 
-    function head() {
-        return start;
+    head() {
+        return this.start;
     }
 
-    function tail() {
-        return end ? end : start;
+    tail() {
+        return this.end ? this.end : this.start;
     }
 
-    function at(index) {
-        let reference = start;
+    at(index) {
+        let reference = this.start;
         for(let i = 0 ; i < index ; i++) {
             reference = reference.nextNode;
         }
         return reference;
     }
 
-    function pop() {
-        if(start.nextNode === null) start = null;
+    pop() {
+        if(this.start.nextNode === null) this.start = null;
         else {
             let length = this.size();
             let node = this.at(length-2);
-            end = node;
+            this.end = node;
             node.nextNode = null;
         }
     }
 
-    function contains(value) {
-        let reference = start;
+    contains(value) {
+        let reference = this.start;
         while(reference) {
             if(reference.value === value) {
                 return true;
@@ -78,8 +82,8 @@ export default function createLinkedList() {
         return false;
     }
 
-    function find(value) {
-        let reference = start;
+    find(value) {
+        let reference = this.start;
         let index = 0;
         while(reference) {
             if(reference.value === value) return index;
@@ -89,15 +93,13 @@ export default function createLinkedList() {
         return null;
     }
 
-    function toString() {
+    toString() {
         let string = "";
-        let reference = start;
+        let reference = this.start;
         while(reference) {
             string += `(${reference.value}) -> `;
             reference = reference.nextNode; 
         }
         return string + "null";
     }
-
-    return { prepend, append, head, tail, find, toString, contains, pop, at, size }
 }
